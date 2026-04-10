@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>יאיר כספי | עורך דין</title>
+  <meta name="description" content="משרד עורכי דין יאיר כספי — ייצוג משפטי מקצועי, אישי ואמין." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --gold: #c9a96e;
+      --dark: #111111;
+      --light: #faf8f5;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: #fff;
+      direction: rtl;
+    }
+    .font-display { font-family: 'Frank Ruhl Libre', serif; }
+
+    /* Navbar hover underline */
+    .nav-link {
+      position: relative;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      text-decoration: none;
+      padding-bottom: 2px;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+    .nav-link:hover::after { transform: scaleX(1); }
+    .nav-link:hover { color: var(--gold); }
+
+    /* Scroll animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hero SVG pulse */
+    @keyframes goldPulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+    .hero-svg { animation: goldPulse 3s ease-in-out infinite; }
+
+    /* Input styles */
+    .form-input {
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.3s ease;
+      direction: rtl;
+    }
+    .form-input:focus { border-color: var(--gold); }
+    .form-input option { background: #1a1a1a; }
+    .form-input::placeholder { color: #555; }
+
+    /* Card hover */
+    .practice-card:hover {
+      border-color: rgba(201,169,110,0.6) !important;
+      transform: scale(1.02);
+    }
+
+    /* Gold label */
+    .gold-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* Blog card clamp */
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Mobile menu */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: block; }
+
+    /* Floating buttons */
+    .float-btn {
+      position: fixed;
+      right: 24px;
+      z-index: 50;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+    .float-btn:hover { transform: scale(1.1); }
+
+    /* Stat box */
+    .stat-num {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .stat-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #666;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #111; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+
+    /* Media placeholder shimmer */
+    .media-logo {
+      background: #f5f5f5;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      width: 160px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════ -->
+<!-- NAVBAR -->
+<!-- ══════════════════════════════════════ -->
+<nav id="navbar" class="fixed top-0 right-0 left-0 z-40 transition-all duration-300 border-b border-white/5" style="background: rgba(17,17,17,0.9); backdrop-filter: blur(12px);">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#hero" class="font-display text-white no-underline" style="font-size:22px; font-weight:700; white-space:nowrap;">
+      יאיר כספי | עו״ד
+    </a>
+
+    <!-- Center nav links (desktop) -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#about" class="nav-link">אודות</a>
+      <a href="#practice" class="nav-link">תחומי התמחות</a>
+      <a href="#blog" class="nav-link">מאמרים</a>
+      <a href="#media" class="nav-link">פרסומים</a>
+      <a href="#contact" class="nav-link">צור קשר</a>
+    </div>
+
+    <!-- CTA + Mobile toggle -->
+    <div class="flex items-center gap-4">
+      <a href="#contact" class="hidden md:inline-flex items-center px-6 py-2 rounded-xl font-semibold text-sm no-underline transition-all duration-300 hover:opacity-90"
+         style="background: var(--gold); color: #111; font-family:'Inter',sans-serif; font-size:15px; font-weight:600;">
+        קביעת פגישה
+      </a>
+      <!-- Hamburger -->
+      <button id="hamburger" class="md:hidden text-white" onclick="toggleMenu()">
+        <i data-lucide="menu" style="width:24px;height:24px;"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile dropdown -->
+  <div id="mobile-menu" class="md:hidden border-t border-white/5" style="background: rgba(17,17,17,0.98);">
+    <div class="px-6 py-4 flex flex-col gap-4">
+      <a href="#about" class="nav-link" onclick="toggleMenu()">אודות</a>
+      <a href="#practice" class="nav-link" onclick="toggleMenu()">תחומי התמחות</a>
+      <a href="#blog" class="nav-link" onclick="toggleMenu()">מאמרים</a>
+      <a href="#media" class="nav-link" onclick="toggleMenu()">פרסומים</a>
+      <a href="#contact" class="nav-link" onclick="toggleMenu()">צור קשר</a>
+      <a href="#contact" class="inline-flex items-center justify-center px-6 py-2 rounded-xl font-semibold text-sm no-underline mt-2"
+         style="background: var(--gold); color: #111;" onclick="toggleMenu()">
+        קביעת פגישה
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════ -->
+<!-- HERO -->
+<!-- ══════════════════════════════════════ -->
+<section id="hero" class="flex items-center" style="background:#111; min-height:100vh; padding-top:80px;">
+  <div class="max-w-7xl mx-auto px-6 w-full">
+    <div class="flex flex-col-reverse md:flex-row items-center gap-12 py-20">
+
+      <!-- Right: Text -->
+      <div class="flex-1 fade-up" style="flex:0 0 55%;">
+        <span class="gold-label block mb-6">משרד עורכי דין</span>
+        <h1 class="font-display text-white mb-6 leading-tight" style="font-size:clamp(48px,7vw,72px); font-weight:700;">
+          יאיר כספי, עו״ד
+        </h1>
+        <p class="mb-10" style="font-family:'Inter',sans-serif; font-size:20px; font-weight:300; color:#d4d0ca; line-height:1.7; max-width:500px;">
+          ייעוץ משפטי מדויק, ייצוג אישי ומחויבות מלאה — כי כל תיק הוא עולם ומלואו.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#contact" class="inline-flex items-center px-8 py-3 rounded-xl no-underline transition-all duration-300 hover:opacity-90"
+             style="background:var(--gold); color:#111; font-family:'Inter',sans-serif; font-size:15px; font-weight:600;">
+            קביעת פגישת ייעוץ
+          </a>
+          <a href="#about" class="inline-flex items-center px-8 py-3 rounded-xl no-underline transition-all duration-300 hover:bg-white/10"
+             style="border:1px solid rgba(255,255,255,0.3); color:white; font-family:'Inter',sans-serif; font-size:15px; font-weight:500;">
+            למידע נוסף
+          </a>
+        </div>
+      </div>
+
+      <!-- Left: SVG -->
+      <div class="flex justify-center items-center fade-up" style="flex:0 0 45%;">
+        <svg class="hero-svg" width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Central pillar -->
+          <line x1="150" y1="40" x2="150" y2="260" stroke="#c9a96e" stroke-width="1" opacity="0.8"/>
+          <!-- Crossbar -->
+          <line x1="70" y1="90" x2="230" y2="90" stroke="#c9a96e" stroke-width="1" opacity="0.8"/>
+          <!-- Left pan chain -->
+          <line x1="90" y1="90" x2="70" y2="160" stroke="#c9a96e" stroke-width="0.8" opacity="0.7"/>
+          <line x1="90" y1="90" x2="110" y2="160" stroke="#c9a96e" stroke-width="0.8" opacity="0.7"/>
+          <!-- Right pan chain -->
+          <line x1="210" y1="90" x2="190" y2="160" stroke="#c9a96e" stroke-width="0.8" opacity="0.7"/>
+          <line x1="210" y1="90" x2="230" y2="160" stroke="#c9a96e" stroke-width="0.8" opacity="0.7"/>
+          <!-- Left pan -->
+          <path d="M 55 160 Q 90 175 125 160" stroke="#c9a96e" stroke-width="1" fill="none" opacity="0.8"/>
+          <!-- Right pan (slightly lower — imbalanced) -->
+          <path d="M 175 167 Q 210 182 245 167" stroke="#c9a96e" stroke-width="1" fill="none" opacity="0.8"/>
+          <!-- Base -->
+          <line x1="120" y1="260" x2="180" y2="260" stroke="#c9a96e" stroke-width="1.5" opacity="0.9"/>
+          <!-- Top knob -->
+          <circle cx="150" cy="40" r="4" stroke="#c9a96e" stroke-width="1" fill="none" opacity="0.9"/>
+          <!-- Left pan knob -->
+          <circle cx="90" cy="90" r="3" stroke="#c9a96e" stroke-width="0.8" fill="none" opacity="0.8"/>
+          <!-- Right pan knob -->
+          <circle cx="210" cy="90" r="3" stroke="#c9a96e" stroke-width="0.8" fill="none" opacity="0.8"/>
+          <!-- Decorative rings -->
+          <circle cx="150" cy="150" r="80" stroke="#c9a96e" stroke-width="0.3" opacity="0.2"/>
+          <circle cx="150" cy="150" r="110" stroke="#c9a96e" stroke-width="0.2" opacity="0.12"/>
+          <!-- Star/gavel accent top right -->
+          <line x1="240" y1="50" x2="260" y2="30" stroke="#c9a96e" stroke-width="0.8" opacity="0.4"/>
+          <line x1="255" y1="50" x2="245" y2="30" stroke="#c9a96e" stroke-width="0.8" opacity="0.4"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Gold divider -->
+    <hr style="border-color: rgba(201,169,110,0.3); border-top-width: 1px; margin: 0;" />
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- ABOUT -->
+<!-- ══════════════════════════════════════ -->
+<section id="about" style="background: var(--light); padding: 96px 0;">
+  <div class="max-w-7xl mx-auto px-6">
+    <span class="gold-label block mb-10 fade-up">אודות</span>
+
+    <div class="flex flex-col md:flex-row gap-16 items-start">
+      <!-- Right: Text -->
+      <div class="flex-1 fade-up">
+        <h2 class="font-display mb-8" style="font-size:44px; font-weight:600; color:#111; line-height:1.2;">
+          יאיר כספי, עו״ד
+        </h2>
+        <p class="mb-6" style="font-family:'Inter',sans-serif; font-size:16px; font-weight:400; line-height:1.8; color:#444;">
+          עורך דין יאיר כספי בעל תואר ראשון במשפטים מאוניברסיטת תל אביב ותואר שני במשפט מסחרי. מוסמך לשמש כעורך דין וכנוטריון, עם ניסיון רב בייצוג לקוחות פרטיים ועסקיים בפני כל ערכאות השיפוט בישראל.
+        </p>
+        <p class="mb-6" style="font-family:'Inter',sans-serif; font-size:16px; font-weight:400; line-height:1.8; color:#444;">
+          גישתו של עו״ד כספי מושתתת על הקשבה מעמיקה לצרכי הלקוח, ניתוח מדויק של המצב המשפטי ועבודה שיטתית לקידום האינטרסים המיטביים של מרשיו — תוך שמירה על יושרה ואמינות מקצועית.
+        </p>
+        <p style="font-family:'Inter',sans-serif; font-size:16px; font-weight:400; line-height:1.8; color:#444;">
+          המשרד מתמחה במתן שירות אישי ובלתי אמצעי לכל לקוח. אנו מאמינים כי כל תיק ראוי לתשומת לב מרבית ולגישה יצירתית המותאמת לנסיבותיו הייחודיות.
+        </p>
+      </div>
+
+      <!-- Left: Photo placeholder -->
+      <div class="fade-up flex-shrink-0 flex justify-center" style="width:320px;">
+        <div class="rounded-2xl flex items-center justify-center" style="width:320px; height:400px; background:#1a1a1a; border:1px solid rgba(201,169,110,0.4);">
+          <span style="font-family:'Inter',sans-serif; font-size:14px; color:#888;">תמונת פרופיל</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats row -->
+    <div class="grid grid-cols-3 gap-6 mt-20 fade-up">
+      <div class="text-center py-8 px-4" style="border-top: 2px solid var(--gold);">
+        <div class="stat-num">15+</div>
+        <div class="stat-label mt-1">שנות ניסיון</div>
+      </div>
+      <div class="text-center py-8 px-4" style="border-top: 2px solid var(--gold);">
+        <div class="stat-num">500+</div>
+        <div class="stat-label mt-1">תיקים מטופלים</div>
+      </div>
+      <div class="text-center py-8 px-4" style="border-top: 2px solid var(--gold);">
+        <div class="stat-num">6</div>
+        <div class="stat-label mt-1">תחומי מומחיות</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- PRACTICE AREAS -->
+<!-- ══════════════════════════════════════ -->
+<section id="practice" style="background: #111; padding: 96px 0;">
+  <div class="max-w-7xl mx-auto px-6">
+    <span class="gold-label block mb-6 fade-up">תחומי התמחות</span>
+    <h2 class="font-display text-white mb-16 fade-up" style="font-size:44px; font-weight:600; line-height:1.2;">
+      ייצוג מקצועי בכל תחום
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Card 1 -->
+      <div class="practice-card rounded-2xl p-8 transition-all duration-300 fade-up" style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.08);">
+        <div class="mb-5"><i data-lucide="scale" style="color:var(--gold); width:28px; height:28px; stroke-width:1.5;"></i></div>
+        <h3 class="mb-3 text-white" style="font-family:'Inter',sans-serif; font-size:18px; font-weight:600;">ליטיגציה ומשפט אזרחי</h3>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#888; line-height:1.7;">ייצוג בתביעות אזרחיות ומסחריות בכל ערכאות המשפט, כולל בית משפט שלום, מחוזי ועליון.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="practice-card rounded-2xl p-8 transition-all duration-300 fade-up" style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.08);">
+        <div class="mb-5"><i data-lucide="home" style="color:var(--gold); width:28px; height:28px; stroke-width:1.5;"></i></div>
+        <h3 class="mb-3 text-white" style="font-family:'Inter',sans-serif; font-size:18px; font-weight:600;">מקרקעין ונדל״ן</h3>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#888; line-height:1.7;">ליווי עסקאות רכישה ומכירה, חוזי שכירות, פינוי-בינוי, תמ״א 38 וסכסוכי שכנים.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="practice-card rounded-2xl p-8 transition-all duration-300 fade-up" style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.08);">
+        <div class="mb-5"><i data-lucide="users" style="color:var(--gold); width:28px; height:28px; stroke-width:1.5;"></i></div>
+        <h3 class="mb-3 text-white" style="font-family:'Inter',sans-serif; font-size:18px; font-weight:600;">דיני משפחה וירושה</h3>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#888; line-height:1.7;">גירושין, הסכמי ממון, משמורת ילדים, צוואות וירושות — בגישה רגישה ומקצועית.</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="practice-card rounded-2xl p-8 transition-all duration-300 fade-up" style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.08);">
+        <div class="mb-5"><i data-lucide="briefcase" style="color:var(--gold); width:28px; height:28px; stroke-width:1.5;"></i></div>
+        <h3 class="mb-3 text-white" style="font-family:'Inter',sans-serif; font-size:18px; font-weight:600;">דיני חברות ועסקים</h3>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#888; line-height:1.7;">הקמת חברות, חוזים מסחריים, הסכמי שותפות, מיזוגים ורכישות — ליווי מלא לאורך כל הדרך.</p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="practice-card rounded-2xl p-8 transition-all duration-300 fade-up" style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.08);">
+        <div class="mb-5"><i data-lucide="file-text" style="color:var(--gold); width:28px; height:28px; stroke-width:1.5;"></i></div>
+        <h3 class="mb-3 text-white" style="font-family:'Inter',sans-serif; font-size:18px; font-weight:600;">חוזים ועסקאות</h3>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#888; line-height:1.7;">ניסוח, בדיקה ומשא ומתן על חוזים מכל סוג — הגנה על האינטרסים שלכם בכל שלב.</p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="practice-card rounded-2xl p-8 transition-all duration-300 fade-up" style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.08);">
+        <div class="mb-5"><i data-lucide="shield" style="color:var(--gold); width:28px; height:28px; stroke-width:1.5;"></i></div>
+        <h3 class="mb-3 text-white" style="font-family:'Inter',sans-serif; font-size:18px; font-weight:600;">דיני עבודה</h3>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#888; line-height:1.7;">ייצוג עובדים ומעסיקים בסכסוכי עבודה, פיטורים, חוזי העסקה ותביעות בבית הדין לעבודה.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- WHY US -->
+<!-- ══════════════════════════════════════ -->
+<section id="why" style="background: var(--light); padding: 96px 0;">
+  <div class="max-w-7xl mx-auto px-6">
+    <span class="gold-label block mb-6 text-center fade-up">למה אנחנו</span>
+    <h2 class="font-display text-center mb-20 fade-up" style="font-size:44px; font-weight:600; color:#111; line-height:1.2;">
+      הגישה שלנו ללקוח
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+
+      <!-- Value 1 -->
+      <div class="text-center fade-up">
+        <div class="flex justify-center mb-6">
+          <i data-lucide="award" style="color:var(--gold); width:32px; height:32px; stroke-width:1.5;"></i>
+        </div>
+        <h3 class="mb-4" style="font-family:'Inter',sans-serif; font-size:20px; font-weight:600; color:#111;">מקצועיות ומצוינות</h3>
+        <p style="font-family:'Inter',sans-serif; font-size:16px; color:#555; line-height:1.8; text-align:center;">
+          ניסיון של שנים רבות בתחום המשפטי, עם עדכון שוטף בפסיקה ובחקיקה — כדי להעניק לכם את הייצוג הטוב ביותר.
+        </p>
+      </div>
+
+      <!-- Value 2 -->
+      <div class="text-center fade-up">
+        <div class="flex justify-center mb-6">
+          <i data-lucide="message-square" style="color:var(--gold); width:32px; height:32px; stroke-width:1.5;"></i>
+        </div>
+        <h3 class="mb-4" style="font-family:'Inter',sans-serif; font-size:20px; font-weight:600; color:#111;">זמינות ותקשורת פתוחה</h3>
+        <p style="font-family:'Inter',sans-serif; font-size:16px; color:#555; line-height:1.8; text-align:center;">
+          אנו מאמינים בשקיפות מלאה מול הלקוח. תמיד תדעו מה קורה בתיק שלכם ותוכלו לפנות אלינו בכל שאלה.
+        </p>
+      </div>
+
+      <!-- Value 3 -->
+      <div class="text-center fade-up">
+        <div class="flex justify-center mb-6">
+          <i data-lucide="clock" style="color:var(--gold); width:32px; height:32px; stroke-width:1.5;"></i>
+        </div>
+        <h3 class="mb-4" style="font-family:'Inter',sans-serif; font-size:20px; font-weight:600; color:#111;">יעילות ומהירות תגובה</h3>
+        <p style="font-family:'Inter',sans-serif; font-size:16px; color:#555; line-height:1.8; text-align:center;">
+          זמן הוא משאב יקר — אנו מגיבים במהירות, עומדים בלוחות זמנים ומניעים את התיק שלכם קדימה ללא עיכובים מיותרים.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- MEDIA -->
+<!-- ══════════════════════════════════════ -->
+<section id="media" style="background: #fff; padding: 96px 0;">
+  <div class="max-w-7xl mx-auto px-6">
+    <span class="gold-label block mb-6 fade-up">פרסומים</span>
+    <h2 class="font-display mb-16 fade-up" style="font-size:44px; font-weight:600; color:#111; line-height:1.2;">
+      נוכחות תקשורתית
+    </h2>
+
+    <!-- Media logos row -->
+    <div class="flex flex-wrap gap-6 mb-16 fade-up">
+      <div class="media-logo"><span style="font-family:'Inter',sans-serif; font-size:12px; color:#bbb;">לוגו מדיה</span></div>
+      <div class="media-logo"><span style="font-family:'Inter',sans-serif; font-size:12px; color:#bbb;">לוגו מדיה</span></div>
+      <div class="media-logo"><span style="font-family:'Inter',sans-serif; font-size:12px; color:#bbb;">לוגו מדיה</span></div>
+      <div class="media-logo"><span style="font-family:'Inter',sans-serif; font-size:12px; color:#bbb;">לוגו מדיה</span></div>
+      <div class="media-logo"><span style="font-family:'Inter',sans-serif; font-size:12px; color:#bbb;">לוגו מדיה</span></div>
+    </div>
+
+    <!-- Quote cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-up">
+      <div class="rounded-xl p-6" style="background:var(--light); border-right:4px solid var(--gold);">
+        <p class="mb-4" style="font-family:'Inter',sans-serif; font-size:16px; color:#333; line-height:1.7; font-style:italic;">
+          "עורך דין כספי הציג עמדה משפטית נחרצת ומבוססת שהביאה לפסיקה תקדימית בתחום המקרקעין."
+        </p>
+        <span style="font-family:'Inter',sans-serif; font-size:13px; color:var(--gold);">גלובס — ינואר 2025</span>
+      </div>
+      <div class="rounded-xl p-6" style="background:var(--light); border-right:4px solid var(--gold);">
+        <p class="mb-4" style="font-family:'Inter',sans-serif; font-size:16px; color:#333; line-height:1.7; font-style:italic;">
+          "ייצוג מקצועי ומיומן שגרם לשינוי מהותי באופן הטיפול בתיקי גירושין מורכבים במחוז תל אביב."
+        </p>
+        <span style="font-family:'Inter',sans-serif; font-size:13px; color:var(--gold);">כלכליסט — מרץ 2025</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- BLOG -->
+<!-- ══════════════════════════════════════ -->
+<section id="blog" style="background: var(--light); padding: 96px 0;">
+  <div class="max-w-7xl mx-auto px-6">
+    <span class="gold-label block mb-6 fade-up">מאמרים</span>
+    <h2 class="font-display mb-4 fade-up" style="font-size:44px; font-weight:600; color:#111; line-height:1.2;">
+      עדכונים ומאמרים משפטיים
+    </h2>
+    <p class="mb-16 fade-up" style="font-family:'Inter',sans-serif; font-size:16px; color:#666; line-height:1.8;">
+      תובנות משפטיות, עדכוני פסיקה וטיפים מעשיים
+    </p>
+
+    <!-- Blog cards grid -->
+    <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <!-- Rendered by JS -->
+    </div>
+
+    <div class="text-center fade-up">
+      <button id="show-all-btn" onclick="showAllPosts()" class="inline-flex items-center px-8 py-3 rounded-xl transition-all duration-300 hover:bg-gray-100"
+         style="border:1px solid #111; color:#111; font-family:'Inter',sans-serif; font-size:15px; font-weight:500; background:transparent;">
+        לכל המאמרים
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- CONTACT -->
+<!-- ══════════════════════════════════════ -->
+<section id="contact" style="background: #111; padding: 96px 0;">
+  <div class="max-w-7xl mx-auto px-6">
+    <span class="gold-label block mb-6 fade-up">צור קשר</span>
+    <h2 class="font-display text-white mb-16 fade-up" style="font-size:44px; font-weight:600; line-height:1.2;">
+      נשמח לשמוע מכם
+    </h2>
+
+    <div class="flex flex-col md:flex-row gap-16">
+
+      <!-- Right: Form -->
+      <div class="flex-1 fade-up" style="flex: 0 0 55%;">
+        <form onsubmit="handleSubmit(event)" class="flex flex-col gap-4">
+          <input type="text" placeholder="שם מלא" class="form-input" required />
+          <input type="tel" placeholder="טלפון" class="form-input" required />
+          <input type="email" placeholder="דואר אלקטרוני" class="form-input" required />
+          <select class="form-input">
+            <option value="">נושא הפנייה</option>
+            <option value="consultation">ייעוץ ראשוני</option>
+            <option value="general">שאלה כללית</option>
+            <option value="other">אחר</option>
+          </select>
+          <textarea placeholder="הודעה" rows="5" class="form-input" style="resize:vertical;"></textarea>
+          <button type="submit" class="w-full py-3 rounded-xl font-semibold transition-all duration-300 hover:opacity-90"
+                  style="background:var(--gold); color:#111; font-family:'Inter',sans-serif; font-size:15px; font-weight:600;">
+            שלח פנייה
+          </button>
+          <p class="text-center" style="font-family:'Inter',sans-serif; font-size:12px; color:#666;">
+            פנייתך תיענה תוך 24 שעות
+          </p>
+        </form>
+      </div>
+
+      <!-- Left: Details -->
+      <div class="fade-up" style="flex: 0 0 45%;">
+        <div class="mb-6 flex items-start gap-4">
+          <i data-lucide="map-pin" style="color:var(--gold); width:18px; height:18px; flex-shrink:0; margin-top:2px;"></i>
+          <span style="font-family:'Inter',sans-serif; font-size:15px; color:#aaa;">רחוב הרצל 10, תל אביב</span>
+        </div>
+        <div class="mb-6 flex items-center gap-4">
+          <i data-lucide="phone" style="color:var(--gold); width:18px; height:18px; flex-shrink:0;"></i>
+          <a href="tel:+972-XX-XXXXXXX" style="font-family:'Inter',sans-serif; font-size:15px; color:#aaa; text-decoration:none;">03-XXX-XXXX</a>
+        </div>
+        <div class="mb-8 flex items-center gap-4">
+          <i data-lucide="mail" style="color:var(--gold); width:18px; height:18px; flex-shrink:0;"></i>
+          <a href="mailto:info@kaspi-law.co.il" style="font-family:'Inter',sans-serif; font-size:15px; color:#aaa; text-decoration:none;">info@kaspi-law.co.il</a>
+        </div>
+
+        <a href="#" class="inline-flex items-center gap-3 px-6 py-3 rounded-xl no-underline mb-8 transition-all duration-300 hover:opacity-90"
+           style="background:#25D366; color:white; font-family:'Inter',sans-serif; font-size:15px; font-weight:500;">
+          <i data-lucide="message-circle" style="width:20px; height:20px;"></i>
+          שלח הודעה בוואטסאפ
+        </a>
+
+        <hr style="border-color: rgba(255,255,255,0.08); margin-bottom:24px;" />
+        <p style="font-family:'Inter',sans-serif; font-size:13px; color:#666; margin-bottom:8px;">שעות פעילות:</p>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#888; line-height:1.8;">
+          ראשון–חמישי: 09:00–18:00<br/>
+          שישי: 09:00–13:00<br/>
+          שבת: סגור
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- FOOTER -->
+<!-- ══════════════════════════════════════ -->
+<footer style="background: #0a0a0a; padding: 48px 0 32px;">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Top row -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-10">
+      <!-- Right: Logo + tagline -->
+      <div>
+        <div class="font-display text-white mb-2" style="font-size:20px; font-weight:700;">יאיר כספי | עו״ד</div>
+        <p style="font-family:'Inter',sans-serif; font-size:13px; color:#666; line-height:1.7;">
+          ייעוץ משפטי מקצועי ואישי<br/>לאורך כל הדרך
+        </p>
+      </div>
+      <!-- Center: Nav links -->
+      <div class="flex flex-col gap-2">
+        <a href="#about" style="font-family:'Inter',sans-serif; font-size:13px; color:#888; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">אודות</a>
+        <a href="#practice" style="font-family:'Inter',sans-serif; font-size:13px; color:#888; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">תחומי התמחות</a>
+        <a href="#blog" style="font-family:'Inter',sans-serif; font-size:13px; color:#888; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">מאמרים</a>
+        <a href="#media" style="font-family:'Inter',sans-serif; font-size:13px; color:#888; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">פרסומים</a>
+        <a href="#contact" style="font-family:'Inter',sans-serif; font-size:13px; color:#888; text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">צור קשר</a>
+      </div>
+      <!-- Left: Social icons -->
+      <div class="flex gap-4 items-start">
+        <a href="#" style="color:#888; text-decoration:none;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='#888'">
+          <i data-lucide="linkedin" style="width:20px; height:20px;"></i>
+        </a>
+        <a href="#" style="color:#888; text-decoration:none;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='#888'">
+          <i data-lucide="facebook" style="width:20px; height:20px;"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <hr style="border-color: rgba(255,255,255,0.05); margin-bottom:24px;" />
+
+    <!-- Bottom bar -->
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <span style="font-family:'Inter',sans-serif; font-size:12px; color:#555;">
+        © 2025 יאיר כספי, עו״ד | כל הזכויות שמורות
+      </span>
+      <div class="flex gap-4 items-center">
+        <a href="#" style="font-family:'Inter',sans-serif; font-size:12px; color:#555; text-decoration:none;" onmouseover="this.style.color='#888'" onmouseout="this.style.color='#555'">
+          מדיניות פרטיות
+        </a>
+        <a href="/admin" style="font-family:'Inter',sans-serif; font-size:11px; color:#333; text-decoration:none;">
+          כניסת מנהל
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════ -->
+<!-- FLOATING BUTTONS -->
+<!-- ══════════════════════════════════════ -->
+<a href="#" class="float-btn" style="bottom:24px; background:#25D366;" title="שלח הודעה בוואטסאפ">
+  <i data-lucide="message-circle" style="color:white; width:24px; height:24px;"></i>
+</a>
+<a href="tel:+972XXXXXXXXX" class="float-btn" style="bottom:96px; background:var(--gold);" title="התקשר">
+  <i data-lucide="phone" style="color:#111; width:22px; height:22px;"></i>
+</a>
+
+<!-- ══════════════════════════════════════ -->
+<!-- SCRIPTS -->
+<!-- ══════════════════════════════════════ -->
+<script>
+  // Init Lucide icons
+  lucide.createIcons();
+
+  // Mobile menu toggle
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('open');
+  }
+
+  // Navbar scroll behavior
+  window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 80) {
+      navbar.style.background = 'rgba(17,17,17,0.95)';
+    } else {
+      navbar.style.background = 'rgba(17,17,17,0.9)';
+    }
+  });
+
+  // IntersectionObserver for fade-up animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ── Blog Posts ──────────────────────────────────────
+  const POST_FILES = [
+    '_posts/2025-01-03-placeholder-3.md',
+    '_posts/2025-01-02-placeholder-2.md',
+    '_posts/2025-01-01-placeholder-1.md',
+  ];
+
+  let allPosts = [];
+  let showingAll = false;
+
+  function parseFrontmatter(text) {
+    const match = text.match(/^---\s*\n([\s\S]*?)\n---/);
+    if (!match) return {};
+    const yaml = match[1];
+    const data = {};
+    yaml.split('\n').forEach(line => {
+      const colonIdx = line.indexOf(':');
+      if (colonIdx === -1) return;
+      const key = line.slice(0, colonIdx).trim();
+      let val = line.slice(colonIdx + 1).trim().replace(/^["']|["']$/g, '');
+      if (val === 'true') val = true;
+      if (val === 'false') val = false;
+      data[key] = val;
+    });
+    return data;
+  }
+
+  function formatDate(dateStr) {
+    try {
+      const d = new Date(dateStr);
+      return d.toLocaleDateString('he-IL', { year: 'numeric', month: 'long', day: 'numeric' });
+    } catch { return dateStr; }
+  }
+
+  function renderCard(post) {
+    return `
+      <div class="rounded-2xl overflow-hidden bg-white hover:shadow-md transition-all duration-300 fade-up">
+        <div style="background:#111; height:6px;"></div>
+        <div class="p-6">
+          <span style="font-family:'Inter',sans-serif; font-size:11px; text-transform:uppercase; color:var(--gold); background:rgba(201,169,110,0.1); border-radius:9999px; padding:4px 12px; letter-spacing:0.05em;">
+            ${post.category || 'כללי'}
+          </span>
+          <h3 class="mt-3" style="font-family:'Inter',sans-serif; font-size:18px; font-weight:600; color:#111; line-height:1.4;">
+            ${post.title}
+          </h3>
+          <p class="mt-1" style="font-family:'Inter',sans-serif; font-size:12px; color:#888;">
+            ${formatDate(post.date)}
+          </p>
+          <p class="mt-3 line-clamp-3" style="font-family:'Inter',sans-serif; font-size:14px; color:#555; line-height:1.7;">
+            ${post.excerpt || ''}
+          </p>
+          <span class="mt-4 block cursor-pointer" style="font-family:'Inter',sans-serif; font-size:13px; color:var(--gold);"
+                onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">
+            המשך קריאה ←
+          </span>
+        </div>
+      </div>`;
+  }
+
+  function renderPlaceholder() {
+    return `
+      <div class="col-span-1 md:col-span-3 rounded-2xl p-12 text-center" style="background:white;">
+        <p style="font-family:'Inter',sans-serif; font-size:16px; color:#888;">
+          בקרוב — מאמרים ועדכונים משפטיים
+        </p>
+      </div>`;
+  }
+
+  function renderBlog(posts) {
+    const grid = document.getElementById('blog-grid');
+    if (!posts.length) {
+      grid.innerHTML = renderPlaceholder();
+      document.getElementById('show-all-btn').style.display = 'none';
+      return;
+    }
+    grid.innerHTML = posts.map(renderCard).join('');
+    // Re-observe new elements
+    grid.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  }
+
+  function showAllPosts() {
+    if (!showingAll) {
+      renderBlog(allPosts);
+      document.getElementById('show-all-btn').textContent = 'הצג פחות';
+      showingAll = true;
+    } else {
+      renderBlog(allPosts.slice(0, 3));
+      document.getElementById('show-all-btn').textContent = 'לכל המאמרים';
+      showingAll = false;
+    }
+  }
+
+  async function loadPosts() {
+    const posts = [];
+    for (const file of POST_FILES) {
+      try {
+        const res = await fetch(file);
+        if (!res.ok) continue;
+        const text = await res.text();
+        const fm = parseFrontmatter(text);
+        if (fm.published === false) continue;
+        posts.push({ ...fm, _file: file });
+      } catch (e) {
+        // skip
+      }
+    }
+    // Sort by date descending
+    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    allPosts = posts;
+    renderBlog(posts.slice(0, 3));
+  }
+
+  loadPosts();
+
+  // Contact form
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type=submit]');
+    btn.textContent = 'הפנייה נשלחה — נחזור אליך בהקדם';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+  }
+</script>
+
+</body>
+</html>
