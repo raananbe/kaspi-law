@@ -162,25 +162,28 @@
       color: #666;
     }
 
-    /* Section heading accent line */
+    /* Section heading accent */
     .section-heading {
       position: relative;
-      padding-bottom: 20px;
-      margin-bottom: 0;
     }
-    .section-heading::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 56px;
-      height: 3px;
+    /* Gold label — bigger & more prominent */
+    .gold-label {
+      font-size: 13px !important;
+      letter-spacing: 0.15em !important;
+    }
+    /* Section intro block */
+    .section-intro {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .section-intro-line {
+      height: 2px;
+      width: 48px;
       background: var(--gold);
+      flex-shrink: 0;
       border-radius: 2px;
-    }
-    .section-heading-center::after {
-      right: 50%;
-      transform: translateX(50%);
     }
 
     /* Scrollbar */
@@ -326,12 +329,15 @@
 <!-- ══════════════════════════════════════ -->
 <section id="about" style="background: var(--light); padding: 96px 0;">
   <div class="max-w-7xl mx-auto px-6">
-    <span class="gold-label block mb-10 fade-up">אודות</span>
+    <div class="section-intro fade-up">
+      <div class="section-intro-line"></div>
+      <span class="gold-label">אודות</span>
+    </div>
 
     <div class="flex flex-col md:flex-row gap-16 items-start">
       <!-- Right: Text -->
       <div class="flex-1 fade-up">
-        <h2 class="font-display section-heading mb-12" style="font-size:54px; font-weight:700; color:#111; line-height:1.15;">
+        <h2 class="font-display mb-10" style="font-size:72px; font-weight:700; color:#111; line-height:1.1;">
           יאיר כספי, עו״ד
         </h2>
         <p class="mb-6" style="font-family:'Inter',sans-serif; font-size:16px; font-weight:400; line-height:1.8; color:#444;">
@@ -376,8 +382,11 @@
 <!-- ══════════════════════════════════════ -->
 <section id="practice" style="background: #111; padding: 96px 0;">
   <div class="max-w-7xl mx-auto px-6">
-    <span class="gold-label block mb-6 fade-up">תחומי התמחות</span>
-    <h2 class="font-display section-heading text-white mb-16 fade-up" style="font-size:54px; font-weight:700; line-height:1.15;">
+    <div class="section-intro fade-up">
+      <div class="section-intro-line"></div>
+      <span class="gold-label">תחומי התמחות</span>
+    </div>
+    <h2 class="font-display text-white mb-16 fade-up" style="font-size:72px; font-weight:700; line-height:1.1; margin-top:16px;">
       ייצוג מקצועי בכל תחום
     </h2>
 
@@ -433,8 +442,12 @@
 <!-- ══════════════════════════════════════ -->
 <section id="why" style="background: var(--light); padding: 96px 0;">
   <div class="max-w-7xl mx-auto px-6">
-    <span class="gold-label block mb-6 text-center fade-up">למה אנחנו</span>
-    <h2 class="font-display section-heading section-heading-center text-center mb-20 fade-up" style="font-size:54px; font-weight:700; color:#111; line-height:1.15;">
+    <div class="section-intro fade-up" style="justify-content:center;">
+      <div class="section-intro-line"></div>
+      <span class="gold-label">למה אנחנו</span>
+      <div class="section-intro-line"></div>
+    </div>
+    <h2 class="font-display text-center mb-20 fade-up" style="font-size:72px; font-weight:700; color:#111; line-height:1.1; margin-top:16px;">
       הגישה שלנו ללקוח
     </h2>
 
@@ -481,8 +494,11 @@
 <!-- ══════════════════════════════════════ -->
 <section id="media" style="background: #fff; padding: 96px 0;">
   <div class="max-w-7xl mx-auto px-6">
-    <span class="gold-label block mb-6 fade-up">פרסומים</span>
-    <h2 class="font-display section-heading mb-16 fade-up" style="font-size:54px; font-weight:700; color:#111; line-height:1.15;">
+    <div class="section-intro fade-up">
+      <div class="section-intro-line"></div>
+      <span class="gold-label">פרסומים</span>
+    </div>
+    <h2 class="font-display mb-16 fade-up" style="font-size:72px; font-weight:700; color:#111; line-height:1.1; margin-top:16px;">
       נוכחות תקשורתית
     </h2>
 
@@ -518,8 +534,11 @@
 <!-- ══════════════════════════════════════ -->
 <section id="articles" style="background: #111; padding: 96px 0;">
   <div class="max-w-7xl mx-auto px-6">
-    <span class="gold-label block mb-6 fade-up">מאמרים</span>
-    <h2 class="font-display section-heading text-white mb-4 fade-up" style="font-size:54px; font-weight:700; line-height:1.15;">
+    <div class="section-intro fade-up">
+      <div class="section-intro-line"></div>
+      <span class="gold-label">מאמרים</span>
+    </div>
+    <h2 class="font-display text-white mb-4 fade-up" style="font-size:72px; font-weight:700; line-height:1.1; margin-top:16px;">
       כתבים ומאמרים מקצועיים
     </h2>
     <p class="mb-16 fade-up" style="font-family:'Inter',sans-serif; font-size:16px; color:#bbb; line-height:1.8;">
@@ -569,17 +588,37 @@
 <!-- ══════════════════════════════════════ -->
 <section id="blog" style="background: var(--light); padding: 96px 0;">
   <div class="max-w-7xl mx-auto px-6">
-    <span class="gold-label block mb-6 fade-up">בלוג</span>
-    <h2 class="font-display section-heading mb-4 fade-up" style="font-size:54px; font-weight:700; color:#111; line-height:1.15;">
+    <div class="section-intro fade-up">
+      <div class="section-intro-line"></div>
+      <span class="gold-label">בלוג</span>
+    </div>
+    <h2 class="font-display mb-4 fade-up" style="font-size:72px; font-weight:700; color:#111; line-height:1.1; margin-top:16px;">
       עדכונים שוטפים
     </h2>
     <p class="mb-16 fade-up" style="font-family:'Inter',sans-serif; font-size:16px; color:#666; line-height:1.8;">
       תובנות יומיומיות, עדכוני פסיקה וטיפים מעשיים
     </p>
 
-    <!-- Blog cards grid -->
-    <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-      <!-- Rendered by JS -->
+    <!-- Blog cards grid — placeholder shown by default, replaced by JS if posts exist -->
+    <div id="blog-grid" class="mb-12" style="display:grid; grid-template-columns:1fr; gap:24px;">
+      <div id="blog-placeholder" style="grid-column:1/-1;">
+        <div style="border-radius:16px; overflow:hidden; background:white; border:1px solid #eee;">
+          <div style="background:var(--gold); height:4px;"></div>
+          <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:80px 32px;">
+            <div style="width:64px; height:64px; border-radius:50%; background:rgba(201,169,110,0.1); display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+              </svg>
+            </div>
+            <h3 style="font-family:'Frank Ruhl Libre',serif; font-size:26px; font-weight:600; color:#111; margin-bottom:12px;">הבלוג בדרך אליכם</h3>
+            <div style="width:40px; height:2px; background:var(--gold); margin:0 auto 20px;"></div>
+            <p style="font-family:'Inter',sans-serif; font-size:15px; color:#888; line-height:1.8; max-width:400px;">
+              בקרוב יפורסמו כאן עדכונים משפטיים, תובנות מהשטח וטיפים מעשיים.<br/>
+              <span style="color:#bbb; font-size:13px;">הפוסט הראשון כבר בהכנה.</span>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="text-center fade-up">
@@ -596,8 +635,11 @@
 <!-- ══════════════════════════════════════ -->
 <section id="contact" style="background: #111; padding: 96px 0;">
   <div class="max-w-7xl mx-auto px-6">
-    <span class="gold-label block mb-6 fade-up">צור קשר</span>
-    <h2 class="font-display section-heading text-white mb-16 fade-up" style="font-size:54px; font-weight:700; line-height:1.15;">
+    <div class="section-intro fade-up">
+      <div class="section-intro-line"></div>
+      <span class="gold-label">צור קשר</span>
+    </div>
+    <h2 class="font-display text-white mb-16 fade-up" style="font-size:72px; font-weight:700; line-height:1.1; margin-top:16px;">
       נשמח לשמוע מכם
     </h2>
 
@@ -846,10 +888,12 @@
   function renderBlog(posts) {
     const grid = document.getElementById('blog-grid');
     if (!posts.length) {
-      grid.innerHTML = renderPlaceholder();
+      // placeholder already in HTML — just hide the button
       document.getElementById('show-all-btn').style.display = 'none';
       return;
     }
+    // Posts found — replace placeholder with 3-col grid of cards
+    grid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(300px, 1fr))';
     grid.innerHTML = posts.map(renderCard).join('');
   }
 
