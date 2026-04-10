@@ -162,6 +162,27 @@
       color: #666;
     }
 
+    /* Section heading accent line */
+    .section-heading {
+      position: relative;
+      padding-bottom: 20px;
+      margin-bottom: 0;
+    }
+    .section-heading::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 56px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+    .section-heading-center::after {
+      right: 50%;
+      transform: translateX(50%);
+    }
+
     /* Scrollbar */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: #111; }
@@ -310,7 +331,7 @@
     <div class="flex flex-col md:flex-row gap-16 items-start">
       <!-- Right: Text -->
       <div class="flex-1 fade-up">
-        <h2 class="font-display mb-8" style="font-size:44px; font-weight:600; color:#111; line-height:1.2;">
+        <h2 class="font-display section-heading mb-12" style="font-size:54px; font-weight:700; color:#111; line-height:1.15;">
           יאיר כספי, עו״ד
         </h2>
         <p class="mb-6" style="font-family:'Inter',sans-serif; font-size:16px; font-weight:400; line-height:1.8; color:#444;">
@@ -356,7 +377,7 @@
 <section id="practice" style="background: #111; padding: 96px 0;">
   <div class="max-w-7xl mx-auto px-6">
     <span class="gold-label block mb-6 fade-up">תחומי התמחות</span>
-    <h2 class="font-display text-white mb-16 fade-up" style="font-size:44px; font-weight:600; line-height:1.2;">
+    <h2 class="font-display section-heading text-white mb-16 fade-up" style="font-size:54px; font-weight:700; line-height:1.15;">
       ייצוג מקצועי בכל תחום
     </h2>
 
@@ -413,7 +434,7 @@
 <section id="why" style="background: var(--light); padding: 96px 0;">
   <div class="max-w-7xl mx-auto px-6">
     <span class="gold-label block mb-6 text-center fade-up">למה אנחנו</span>
-    <h2 class="font-display text-center mb-20 fade-up" style="font-size:44px; font-weight:600; color:#111; line-height:1.2;">
+    <h2 class="font-display section-heading section-heading-center text-center mb-20 fade-up" style="font-size:54px; font-weight:700; color:#111; line-height:1.15;">
       הגישה שלנו ללקוח
     </h2>
 
@@ -461,7 +482,7 @@
 <section id="media" style="background: #fff; padding: 96px 0;">
   <div class="max-w-7xl mx-auto px-6">
     <span class="gold-label block mb-6 fade-up">פרסומים</span>
-    <h2 class="font-display mb-16 fade-up" style="font-size:44px; font-weight:600; color:#111; line-height:1.2;">
+    <h2 class="font-display section-heading mb-16 fade-up" style="font-size:54px; font-weight:700; color:#111; line-height:1.15;">
       נוכחות תקשורתית
     </h2>
 
@@ -498,7 +519,7 @@
 <section id="articles" style="background: #111; padding: 96px 0;">
   <div class="max-w-7xl mx-auto px-6">
     <span class="gold-label block mb-6 fade-up">מאמרים</span>
-    <h2 class="font-display text-white mb-4 fade-up" style="font-size:44px; font-weight:600; line-height:1.2;">
+    <h2 class="font-display section-heading text-white mb-4 fade-up" style="font-size:54px; font-weight:700; line-height:1.15;">
       כתבים ומאמרים מקצועיים
     </h2>
     <p class="mb-16 fade-up" style="font-family:'Inter',sans-serif; font-size:16px; color:#bbb; line-height:1.8;">
@@ -549,7 +570,7 @@
 <section id="blog" style="background: var(--light); padding: 96px 0;">
   <div class="max-w-7xl mx-auto px-6">
     <span class="gold-label block mb-6 fade-up">בלוג</span>
-    <h2 class="font-display mb-4 fade-up" style="font-size:44px; font-weight:600; color:#111; line-height:1.2;">
+    <h2 class="font-display section-heading mb-4 fade-up" style="font-size:54px; font-weight:700; color:#111; line-height:1.15;">
       עדכונים שוטפים
     </h2>
     <p class="mb-16 fade-up" style="font-family:'Inter',sans-serif; font-size:16px; color:#666; line-height:1.8;">
@@ -576,7 +597,7 @@
 <section id="contact" style="background: #111; padding: 96px 0;">
   <div class="max-w-7xl mx-auto px-6">
     <span class="gold-label block mb-6 fade-up">צור קשר</span>
-    <h2 class="font-display text-white mb-16 fade-up" style="font-size:44px; font-weight:600; line-height:1.2;">
+    <h2 class="font-display section-heading text-white mb-16 fade-up" style="font-size:54px; font-weight:700; line-height:1.15;">
       נשמח לשמוע מכם
     </h2>
 
@@ -774,23 +795,22 @@
 
   function renderCard(post) {
     return `
-      <div class="rounded-2xl overflow-hidden bg-white hover:shadow-md transition-all duration-300 fade-up">
+      <div style="border-radius:16px; overflow:hidden; background:white; box-shadow:0 2px 12px rgba(0,0,0,0.06); transition:box-shadow 0.3s ease;">
         <div style="background:#111; height:6px;"></div>
-        <div class="p-6">
-          <span style="font-family:'Inter',sans-serif; font-size:11px; text-transform:uppercase; color:var(--gold); background:rgba(201,169,110,0.1); border-radius:9999px; padding:4px 12px; letter-spacing:0.05em;">
+        <div style="padding:24px;">
+          <span style="font-family:'Inter',sans-serif; font-size:11px; text-transform:uppercase; color:var(--gold); background:rgba(201,169,110,0.1); border-radius:9999px; padding:4px 12px; letter-spacing:0.05em; display:inline-block;">
             ${post.category || 'כללי'}
           </span>
-          <h3 class="mt-3" style="font-family:'Inter',sans-serif; font-size:18px; font-weight:600; color:#111; line-height:1.4;">
+          <h3 style="font-family:'Inter',sans-serif; font-size:18px; font-weight:600; color:#111; line-height:1.4; margin-top:12px; margin-bottom:0;">
             ${post.title}
           </h3>
-          <p class="mt-1" style="font-family:'Inter',sans-serif; font-size:12px; color:#888;">
+          <p style="font-family:'Inter',sans-serif; font-size:12px; color:#888; margin-top:4px;">
             ${formatDate(post.date)}
           </p>
-          <p class="mt-3 line-clamp-3" style="font-family:'Inter',sans-serif; font-size:14px; color:#555; line-height:1.7;">
+          <p style="font-family:'Inter',sans-serif; font-size:14px; color:#555; line-height:1.7; margin-top:12px; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">
             ${post.excerpt || ''}
           </p>
-          <span class="mt-4 block cursor-pointer" style="font-family:'Inter',sans-serif; font-size:13px; color:var(--gold);"
-                onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">
+          <span style="font-family:'Inter',sans-serif; font-size:13px; color:var(--gold); margin-top:16px; display:block; cursor:pointer;">
             המשך קריאה ←
           </span>
         </div>
@@ -799,18 +819,15 @@
 
   function renderPlaceholder() {
     return `
-      <div class="col-span-1 md:col-span-3">
-        <div class="rounded-2xl overflow-hidden" style="background:white; border:1px solid #eee;">
-          <!-- Top gold bar -->
+      <div style="grid-column: 1 / -1;">
+        <div style="border-radius:16px; overflow:hidden; background:white; border:1px solid #eee;">
           <div style="background:var(--gold); height:4px;"></div>
-          <div class="flex flex-col items-center justify-center text-center py-20 px-8">
-            <!-- Icon -->
+          <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:80px 32px;">
             <div style="width:64px; height:64px; border-radius:50%; background:rgba(201,169,110,0.1); display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
               </svg>
             </div>
-            <!-- Title -->
             <h3 style="font-family:'Frank Ruhl Libre',serif; font-size:24px; font-weight:600; color:#111; margin-bottom:12px;">
               הבלוג בדרך אליכם
             </h3>
@@ -834,8 +851,6 @@
       return;
     }
     grid.innerHTML = posts.map(renderCard).join('');
-    // Re-observe new elements
-    grid.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   }
 
   function showAllPosts() {
