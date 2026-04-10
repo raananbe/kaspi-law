@@ -86,7 +86,7 @@
     }
     .form-input:focus { border-color: var(--gold); }
     .form-input option { background: #1a1a1a; }
-    .form-input::placeholder { color: #555; }
+    .form-input::placeholder { color: #777; }
 
     /* Card hover */
     .practice-card:hover {
@@ -116,23 +116,37 @@
     #mobile-menu { display: none; }
     #mobile-menu.open { display: block; }
 
-    /* Floating buttons */
+    /* Floating buttons — pill with label */
     .float-btn {
       position: fixed;
-      right: 24px;
+      right: 20px;
       z-index: 50;
-      border-radius: 50%;
-      width: 56px;
-      height: 56px;
+      border-radius: 50px;
+      height: 52px;
+      padding: 0 20px 0 16px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      gap: 10px;
       cursor: pointer;
       text-decoration: none;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      white-space: nowrap;
     }
-    .float-btn:hover { transform: scale(1.1); }
+    .float-btn:hover { transform: scale(1.06); }
+    .float-btn-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    /* Pulse ring on WhatsApp */
+    @keyframes floatPulse {
+      0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5), 0 6px 24px rgba(0,0,0,0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(37,211,102,0), 0 6px 24px rgba(0,0,0,0.4); }
+      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0), 0 6px 24px rgba(0,0,0,0.4); }
+    }
+    .float-whatsapp { animation: floatPulse 2.5s ease-out infinite; }
+    .float-phone { box-shadow: 0 6px 24px rgba(201,169,110,0.45); }
 
     /* Stat box */
     .stat-num {
@@ -183,7 +197,8 @@
     <div class="hidden md:flex items-center gap-8">
       <a href="#about" class="nav-link">אודות</a>
       <a href="#practice" class="nav-link">תחומי התמחות</a>
-      <a href="#blog" class="nav-link">מאמרים</a>
+      <a href="#articles" class="nav-link">מאמרים</a>
+      <a href="#blog" class="nav-link">בלוג</a>
       <a href="#media" class="nav-link">פרסומים</a>
       <a href="#contact" class="nav-link">צור קשר</a>
     </div>
@@ -351,42 +366,42 @@
       <div class="practice-card rounded-2xl p-8 transition-all duration-300 fade-up" style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.08);">
         <div class="mb-5"><i data-lucide="scale" style="color:var(--gold); width:28px; height:28px; stroke-width:1.5;"></i></div>
         <h3 class="mb-3 text-white" style="font-family:'Inter',sans-serif; font-size:18px; font-weight:600;">ליטיגציה ומשפט אזרחי</h3>
-        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#888; line-height:1.7;">ייצוג בתביעות אזרחיות ומסחריות בכל ערכאות המשפט, כולל בית משפט שלום, מחוזי ועליון.</p>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#bbb; line-height:1.7;">ייצוג בתביעות אזרחיות ומסחריות בכל ערכאות המשפט, כולל בית משפט שלום, מחוזי ועליון.</p>
       </div>
 
       <!-- Card 2 -->
       <div class="practice-card rounded-2xl p-8 transition-all duration-300 fade-up" style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.08);">
         <div class="mb-5"><i data-lucide="home" style="color:var(--gold); width:28px; height:28px; stroke-width:1.5;"></i></div>
         <h3 class="mb-3 text-white" style="font-family:'Inter',sans-serif; font-size:18px; font-weight:600;">מקרקעין ונדל״ן</h3>
-        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#888; line-height:1.7;">ליווי עסקאות רכישה ומכירה, חוזי שכירות, פינוי-בינוי, תמ״א 38 וסכסוכי שכנים.</p>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#bbb; line-height:1.7;">ליווי עסקאות רכישה ומכירה, חוזי שכירות, פינוי-בינוי, תמ״א 38 וסכסוכי שכנים.</p>
       </div>
 
       <!-- Card 3 -->
       <div class="practice-card rounded-2xl p-8 transition-all duration-300 fade-up" style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.08);">
         <div class="mb-5"><i data-lucide="users" style="color:var(--gold); width:28px; height:28px; stroke-width:1.5;"></i></div>
         <h3 class="mb-3 text-white" style="font-family:'Inter',sans-serif; font-size:18px; font-weight:600;">דיני משפחה וירושה</h3>
-        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#888; line-height:1.7;">גירושין, הסכמי ממון, משמורת ילדים, צוואות וירושות — בגישה רגישה ומקצועית.</p>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#bbb; line-height:1.7;">גירושין, הסכמי ממון, משמורת ילדים, צוואות וירושות — בגישה רגישה ומקצועית.</p>
       </div>
 
       <!-- Card 4 -->
       <div class="practice-card rounded-2xl p-8 transition-all duration-300 fade-up" style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.08);">
         <div class="mb-5"><i data-lucide="briefcase" style="color:var(--gold); width:28px; height:28px; stroke-width:1.5;"></i></div>
         <h3 class="mb-3 text-white" style="font-family:'Inter',sans-serif; font-size:18px; font-weight:600;">דיני חברות ועסקים</h3>
-        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#888; line-height:1.7;">הקמת חברות, חוזים מסחריים, הסכמי שותפות, מיזוגים ורכישות — ליווי מלא לאורך כל הדרך.</p>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#bbb; line-height:1.7;">הקמת חברות, חוזים מסחריים, הסכמי שותפות, מיזוגים ורכישות — ליווי מלא לאורך כל הדרך.</p>
       </div>
 
       <!-- Card 5 -->
       <div class="practice-card rounded-2xl p-8 transition-all duration-300 fade-up" style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.08);">
         <div class="mb-5"><i data-lucide="file-text" style="color:var(--gold); width:28px; height:28px; stroke-width:1.5;"></i></div>
         <h3 class="mb-3 text-white" style="font-family:'Inter',sans-serif; font-size:18px; font-weight:600;">חוזים ועסקאות</h3>
-        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#888; line-height:1.7;">ניסוח, בדיקה ומשא ומתן על חוזים מכל סוג — הגנה על האינטרסים שלכם בכל שלב.</p>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#bbb; line-height:1.7;">ניסוח, בדיקה ומשא ומתן על חוזים מכל סוג — הגנה על האינטרסים שלכם בכל שלב.</p>
       </div>
 
       <!-- Card 6 -->
       <div class="practice-card rounded-2xl p-8 transition-all duration-300 fade-up" style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.08);">
         <div class="mb-5"><i data-lucide="shield" style="color:var(--gold); width:28px; height:28px; stroke-width:1.5;"></i></div>
         <h3 class="mb-3 text-white" style="font-family:'Inter',sans-serif; font-size:18px; font-weight:600;">דיני עבודה</h3>
-        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#888; line-height:1.7;">ייצוג עובדים ומעסיקים בסכסוכי עבודה, פיטורים, חוזי העסקה ותביעות בבית הדין לעבודה.</p>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#bbb; line-height:1.7;">ייצוג עובדים ומעסיקים בסכסוכי עבודה, פיטורים, חוזי העסקה ותביעות בבית הדין לעבודה.</p>
       </div>
     </div>
   </div>
@@ -478,16 +493,67 @@
 </section>
 
 <!-- ══════════════════════════════════════ -->
-<!-- BLOG -->
+<!-- ARTICLES — מאמרים -->
+<!-- ══════════════════════════════════════ -->
+<section id="articles" style="background: #111; padding: 96px 0;">
+  <div class="max-w-7xl mx-auto px-6">
+    <span class="gold-label block mb-6 fade-up">מאמרים</span>
+    <h2 class="font-display text-white mb-4 fade-up" style="font-size:44px; font-weight:600; line-height:1.2;">
+      כתבים ומאמרים מקצועיים
+    </h2>
+    <p class="mb-16 fade-up" style="font-family:'Inter',sans-serif; font-size:16px; color:#bbb; line-height:1.8;">
+      ניתוחים משפטיים מעמיקים ופרסומים אקדמיים
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Article 1 -->
+      <div class="rounded-2xl p-8 fade-up transition-all duration-300 hover:border-[#c9a96e]/50" style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.08);">
+        <span style="font-family:'Inter',sans-serif; font-size:11px; text-transform:uppercase; color:var(--gold); letter-spacing:0.08em;">נדל״ן</span>
+        <h3 class="mt-3 mb-3 text-white" style="font-family:'Inter',sans-serif; font-size:17px; font-weight:600; line-height:1.4;">
+          זכויות הדייר בעסקאות פינוי-בינוי: מה שחשוב לדעת
+        </h3>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#bbb; line-height:1.7;">
+          סקירה מקיפה של הזכויות החוקיות של דיירים בפרויקטי פינוי-בינוי, כולל סעיפי הגנה קריטיים בחוזה.
+        </p>
+        <span class="mt-5 block" style="font-family:'Inter',sans-serif; font-size:12px; color:#666;">ינואר 2025</span>
+      </div>
+      <!-- Article 2 -->
+      <div class="rounded-2xl p-8 fade-up transition-all duration-300 hover:border-[#c9a96e]/50" style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.08);">
+        <span style="font-family:'Inter',sans-serif; font-size:11px; text-transform:uppercase; color:var(--gold); letter-spacing:0.08em;">דיני משפחה</span>
+        <h3 class="mt-3 mb-3 text-white" style="font-family:'Inter',sans-serif; font-size:17px; font-weight:600; line-height:1.4;">
+          הסכם ממון: מתי, למה ואיך לעשות אותו נכון
+        </h3>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#bbb; line-height:1.7;">
+          מדריך מעשי להסכמי ממון לפני נישואין — מה חייב להיות בו, מה מותר להחריג ואיך להגן על עצמך.
+        </p>
+        <span class="mt-5 block" style="font-family:'Inter',sans-serif; font-size:12px; color:#666;">פברואר 2025</span>
+      </div>
+      <!-- Article 3 -->
+      <div class="rounded-2xl p-8 fade-up transition-all duration-300 hover:border-[#c9a96e]/50" style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.08);">
+        <span style="font-family:'Inter',sans-serif; font-size:11px; text-transform:uppercase; color:var(--gold); letter-spacing:0.08em;">דיני חברות</span>
+        <h3 class="mt-3 mb-3 text-white" style="font-family:'Inter',sans-serif; font-size:17px; font-weight:600; line-height:1.4;">
+          אחריות אישית של בעלי מניות: מתי החברה לא מגינה
+        </h3>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#bbb; line-height:1.7;">
+          מקרים בהם בתי המשפט מרימים את מסך ההתאגדות ומטילים אחריות אישית על בעלי מניות ומנהלים.
+        </p>
+        <span class="mt-5 block" style="font-family:'Inter',sans-serif; font-size:12px; color:#666;">מרץ 2025</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- BLOG — בלוג -->
 <!-- ══════════════════════════════════════ -->
 <section id="blog" style="background: var(--light); padding: 96px 0;">
   <div class="max-w-7xl mx-auto px-6">
-    <span class="gold-label block mb-6 fade-up">מאמרים</span>
+    <span class="gold-label block mb-6 fade-up">בלוג</span>
     <h2 class="font-display mb-4 fade-up" style="font-size:44px; font-weight:600; color:#111; line-height:1.2;">
-      עדכונים ומאמרים משפטיים
+      עדכונים שוטפים
     </h2>
     <p class="mb-16 fade-up" style="font-family:'Inter',sans-serif; font-size:16px; color:#666; line-height:1.8;">
-      תובנות משפטיות, עדכוני פסיקה וטיפים מעשיים
+      תובנות יומיומיות, עדכוני פסיקה וטיפים מעשיים
     </p>
 
     <!-- Blog cards grid -->
@@ -498,7 +564,7 @@
     <div class="text-center fade-up">
       <button id="show-all-btn" onclick="showAllPosts()" class="inline-flex items-center px-8 py-3 rounded-xl transition-all duration-300 hover:bg-gray-100"
          style="border:1px solid #111; color:#111; font-family:'Inter',sans-serif; font-size:15px; font-weight:500; background:transparent;">
-        לכל המאמרים
+        לכל הפוסטים
       </button>
     </div>
   </div>
@@ -533,7 +599,7 @@
                   style="background:var(--gold); color:#111; font-family:'Inter',sans-serif; font-size:15px; font-weight:600;">
             שלח פנייה
           </button>
-          <p class="text-center" style="font-family:'Inter',sans-serif; font-size:12px; color:#666;">
+          <p class="text-center" style="font-family:'Inter',sans-serif; font-size:12px; color:#999;">
             פנייתך תיענה תוך 24 שעות
           </p>
         </form>
@@ -543,15 +609,15 @@
       <div class="fade-up" style="flex: 0 0 45%;">
         <div class="mb-6 flex items-start gap-4">
           <i data-lucide="map-pin" style="color:var(--gold); width:18px; height:18px; flex-shrink:0; margin-top:2px;"></i>
-          <span style="font-family:'Inter',sans-serif; font-size:15px; color:#aaa;">רחוב הרצל 10, תל אביב</span>
+          <span style="font-family:'Inter',sans-serif; font-size:15px; color:#ccc;">רחוב הרצל 10, תל אביב</span>
         </div>
         <div class="mb-6 flex items-center gap-4">
           <i data-lucide="phone" style="color:var(--gold); width:18px; height:18px; flex-shrink:0;"></i>
-          <a href="tel:+972-XX-XXXXXXX" style="font-family:'Inter',sans-serif; font-size:15px; color:#aaa; text-decoration:none;">03-XXX-XXXX</a>
+          <a href="tel:+972-XX-XXXXXXX" style="font-family:'Inter',sans-serif; font-size:15px; color:#ccc; text-decoration:none;">03-XXX-XXXX</a>
         </div>
         <div class="mb-8 flex items-center gap-4">
           <i data-lucide="mail" style="color:var(--gold); width:18px; height:18px; flex-shrink:0;"></i>
-          <a href="mailto:info@kaspi-law.co.il" style="font-family:'Inter',sans-serif; font-size:15px; color:#aaa; text-decoration:none;">info@kaspi-law.co.il</a>
+          <a href="mailto:info@kaspi-law.co.il" style="font-family:'Inter',sans-serif; font-size:15px; color:#ccc; text-decoration:none;">info@kaspi-law.co.il</a>
         </div>
 
         <a href="#" class="inline-flex items-center gap-3 px-6 py-3 rounded-xl no-underline mb-8 transition-all duration-300 hover:opacity-90"
@@ -561,8 +627,8 @@
         </a>
 
         <hr style="border-color: rgba(255,255,255,0.08); margin-bottom:24px;" />
-        <p style="font-family:'Inter',sans-serif; font-size:13px; color:#666; margin-bottom:8px;">שעות פעילות:</p>
-        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#888; line-height:1.8;">
+        <p style="font-family:'Inter',sans-serif; font-size:13px; color:#999; margin-bottom:8px;">שעות פעילות:</p>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#bbb; line-height:1.8;">
           ראשון–חמישי: 09:00–18:00<br/>
           שישי: 09:00–13:00<br/>
           שבת: סגור
@@ -629,11 +695,13 @@
 <!-- ══════════════════════════════════════ -->
 <!-- FLOATING BUTTONS -->
 <!-- ══════════════════════════════════════ -->
-<a href="#" class="float-btn" style="bottom:24px; background:#25D366;" title="שלח הודעה בוואטסאפ">
-  <i data-lucide="message-circle" style="color:white; width:24px; height:24px;"></i>
+<a href="#" class="float-btn float-whatsapp" style="bottom:24px; background:#25D366;">
+  <i data-lucide="message-circle" style="color:white; width:22px; height:22px; flex-shrink:0;"></i>
+  <span class="float-btn-label" style="color:white;">וואטסאפ</span>
 </a>
-<a href="tel:+972XXXXXXXXX" class="float-btn" style="bottom:96px; background:var(--gold);" title="התקשר">
-  <i data-lucide="phone" style="color:#111; width:22px; height:22px;"></i>
+<a href="tel:+972XXXXXXXXX" class="float-btn float-phone" style="bottom:90px; background:var(--gold);">
+  <i data-lucide="phone" style="color:#111; width:22px; height:22px; flex-shrink:0;"></i>
+  <span class="float-btn-label" style="color:#111;">התקשר</span>
 </a>
 
 <!-- ══════════════════════════════════════ -->
